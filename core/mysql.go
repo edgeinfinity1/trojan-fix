@@ -343,7 +343,7 @@ func (mysql *Mysql) GetUserByName(name string) *User {
 		return nil
 	}
 	defer db.Close()
-	user, err := queryUser(db, fmt.Sprintf("SELECT * FROM users WHERE BINARY username=?", name))
+	user, err := queryUser(db, "SELECT * FROM users WHERE BINARY username=?", name)
 	if err != nil {
 		return nil
 	}
@@ -357,7 +357,7 @@ func (mysql *Mysql) GetUserByPass(pass string) *User {
 		return nil
 	}
 	defer db.Close()
-	user, err := queryUser(db, fmt.Sprintf("SELECT * FROM users WHERE BINARY passwordShow=?", pass))
+	user, err := queryUser(db, "SELECT * FROM users WHERE BINARY passwordShow=?", pass)
 	if err != nil {
 		return nil
 	}
